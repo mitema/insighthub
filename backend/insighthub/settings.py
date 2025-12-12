@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -37,6 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #'rest_framework',
+    'insighthub_accounts'
+
+    #'accounts'
+    #'rest_framework_simplejwt'
+    #'accounts.apps.AccountsConfig'
 ]
 
 MIDDLEWARE = [
@@ -68,16 +75,53 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'insighthub.wsgi.application'
-
+#backenddatabase&1
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.postgresql',
+#             'NAME': 'postgres',  
+#             'USER': 'postgres',
+#             'PASSWORD': "testpaswword&1",
+#             'HOST': 'aws-1-eu-west-1.pooler.supabase.com',
+#             'PORT': '5432',
+#             'DATABASE':'postgres',
+#             'OPTIONS': {
+#                 'sslmode': 'require',
+#                 #'options': '-c pool_mode=session'
+#             },
+#         }
+# }
+
+
+# DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.postgresql',
+#             'NAME': 'postgres',  
+#             'USER': 'testuser.jpjvgnlyxkkhgihmneys',
+#             'PASSWORD': "testuser",
+#             'HOST': 'aws-1-eu-west-1.pooler.supabase.com',
+#             'PORT': '5432',
+#             'DATABASE':'postgres',
+#             'OPTIONS': {
+#                 'sslmode': 'require',
+#                 'options': '-c pool_mode=session'
+#             },
+#         }
+# }
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.parse(
+        #"postgresql://postgres:Mrbliss&1@db.jpjvgnlyxkkhgihmneys.supabase.co:5432/postgres?sslmode=require"
+        #"postgresql://postgres.jpjvgnlyxkkhgihmneys:GodsGoodnessMrbliss&1@aws-1-eu-west-1.pooler.supabase.com:5432/postgres"
+        #"postgresql://postgres.jpjvgnlyxkkhgihmneys:testpaswword&1@aws-1-eu-west-1.pooler.supabase.com:5432/postgres"
+        #"postgresql://postgres.cqijqqqckyyqhhzludln:Mrbliss&1@aws-1-eu-west-1.pooler.supabase.com:5432/postgres"
+        #"postgresql://postgres.jpjvgnlyxkkhgihmneyssampletestpassword&1@aws-1-eu-west-1.pooler.supabase.com:5432/postgres.jpjvgnlyxkkhgihmneys"
+        "postgresql://postgres.jpjvgnlyxkkhgihmneys:backenddatabase&1@aws-1-eu-west-1.pooler.supabase.com:5432/postgres"
+    )
 }
 
 
@@ -99,7 +143,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTH_USER_MODEL = 'accounts.User'
+AUTH_USER_MODEL = 'insighthub_accounts.User'
 
 
 

@@ -5,11 +5,9 @@ from .models import User
 
 
 #@admin.register(CustomerUser).
-class CustomUserAdmin(UserAdmin):
-    model = User
-    list_display = ('username', 'email' 'is_active', 'is_staff', 'date')
-    fieldsets = UserAdmin.fieldsets +  (
-        (None, {'fields': ('bio', 'profile_picture', 'role', 'date_of_birth')})
-    )
+#class CustomUserAdmin(UserAdmin):
+    #
+    #list_display = ('username', 'email' 'is_active', 'is_staff', 'date')
+    ###)
 
-    admin.site.register(User, CustomUserAdmin)
+    #admin.site.register(User, CustomUserAdmin)
