@@ -61,6 +61,7 @@ export default function Home() {
 
   return (
     <div>
+      <Navbar />
       <LoginPage />
       {/* <h1>Home Page (App Router)</h1>
       <p>This page is served from the App Router.</p>
