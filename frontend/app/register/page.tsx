@@ -1,8 +1,8 @@
 "use client";
 
 import { useDispatch, useSelector } from "react-redux";
-import { registerUser } from "@/frontend/store/slices/authSlice";
-import { RootState, AppDispatch } from "@/frontend/store";
+import { registerUser } from "@/store/slices/authSlice";
+import { RootState, AppDispatch } from "@/store";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
