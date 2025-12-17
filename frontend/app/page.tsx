@@ -15,6 +15,8 @@ import { useEffect } from "react";
 //import Loading from './loading'
 //import { setUserData } from '@/utils/UserDataSlice'
 //import { RootState } from '@/Store/store'
+import Link from "next/link";
+import LoginPage from "./login/page";
 
 export default function Home() {
   //const dispatch = useDispatch();
@@ -58,20 +60,16 @@ export default function Home() {
   // }, [categoryLoading, productLoading, dispatch, loading])
 
   return (
-    <>
+    <div>
       <Navbar />
-      {/* <Hero setRatio={setRatio} />
-      {
-        loading ? <Loading /> :
-          <>
-
-            <TopCategories />
-            <FeaturedProduct  />
-            <Footer />
-
-          </>
-      }
-      <ToastContainer /> */}
-    </>
+      <LoginPage />
+      {/* <h1>Home Page (App Router)</h1>
+      <p>This page is served from the App Router.</p>
+      <Link href="/about">
+        <button style={{ marginTop: "1rem", padding: "0.5rem 1rem" }}>
+          Go to About Page (Pages Router)
+        </button>
+      </Link> */}
+    </div>
   );
 }
