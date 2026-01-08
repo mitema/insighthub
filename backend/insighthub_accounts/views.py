@@ -7,7 +7,7 @@ import json
 User = get_user_model()
 
 @csrf_exempt
-def register(request):
+def login(request):
     if request.method != "POST":
         return JsonResponse({"error": "POST request required"}, status=400)
 

@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { registerApi } from "@/services/auth_service";
+import { loginApi } from "@/services/auth_service";
 
 interface AuthState {
   loading: boolean;
@@ -13,15 +13,15 @@ const initialState: AuthState = {
   user: null,
 };
 
-export const registerUser = createAsyncThunk(
-  "auth/register",
-  async (data: { email: string; password: string; name: string }, thunkAPI) => {
+export const loginUser = createAsyncThunk(
+  "auth/login",
+  async (data: { email: string; password: string }, thunkAPI) => {
     try {
       console.log("in register user");
-      return await registerApi(data);
+      return await loginApi(data);
     } catch (err: any) {
       return thunkAPI.rejectWithValue(
-        err.response?.data?.error || "Registration failed"
+        err.response?.data?.error || "login failed"
       );
     }
   }
@@ -33,15 +33,15 @@ const authSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(registerUser.pending, (state) => {
+      .addCase(loginUser.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(registerUser.fulfilled, (state, action) => {
+      .addCase(loginUser.fulfilled, (state, action) => {
         state.loading = false;
         state.user = action.payload;
       })
-      .addCase(registerUser.rejected, (state, action: any) => {
+      .addCase(loginUser.rejected, (state, action: any) => {
         state.loading = false;
         state.error = action.payload;
       });

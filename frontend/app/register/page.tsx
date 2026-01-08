@@ -1,7 +1,6 @@
 "use client";
-
 import { useDispatch, useSelector } from "react-redux";
-import { registerUser } from "@/store/slices/authSlice";
+// import { registerUser } from "@/store/slices/authSlice";
 import { RootState, AppDispatch } from "@/store";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
@@ -17,14 +16,25 @@ const RegisterPage = () => {
   const [name, setName] = useState("");
   const [formDataResponse, setFormDataResponse]: any = useState("");
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    const response = await dispatch(registerUser({ email, password, name }));
-    // if (registerUser.fulfilled.match(response)) {
-    setFormDataResponse(response);
-    // }
-  };
+  // const handleSubmit = async (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   console.log("in handle submits");
 
+  //   try {
+  //     // const response = await dispatch(
+  //     //   registerUser({ email, password, name })
+  //     // )
+  //   //   setFormDataResponse(response);
+  //   //   console.log(response);
+  //   // } catch (err) {
+  //   //   console.error("Registration failed:", err);
+  //   // }
+  //   // if (registerUser.fulfilled.match(response)) {
+
+  //   // }
+  // };
+
+  const handleSubmit = () => {};
   return (
     <>
       {formDataResponse ? (
@@ -38,19 +48,26 @@ const RegisterPage = () => {
         >
           <Card className="shadow rounded" style={{ width: "50%" }}>
             <Card.Body>
-              <Form>
-                <Form.Group className="mb-3" controlId="formBasicName">
+              <Form onSubmit={handleSubmit} method="POST">
+                <Form.Group className="mb-3">
                   <Form.Label>Name</Form.Label>
                   <Form.Control
-                    type="name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    required
+                  />
+                </Form.Group>
+
+                {/* <Form.Group className="mb-3">
+                  <Form.Label>Name</Form.Label>
+                  <Form.Control
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                   />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                  <Form.Label style={{ color: "black" }}>
-                    Email address
-                  </Form.Label>
+                </Form.Group> */}
+
+                <Form.Group className="mb-3">
+                  <Form.Label>Email</Form.Label>
                   <Form.Control
                     type="email"
                     value={email}
@@ -58,7 +75,7 @@ const RegisterPage = () => {
                   />
                 </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Group className="mb-3">
                   <Form.Label>Password</Form.Label>
                   <Form.Control
                     type="password"
@@ -66,11 +83,8 @@ const RegisterPage = () => {
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </Form.Group>
-                <Form.Group
-                  className="mb-3"
-                  controlId="formBasicCheckbox"
-                ></Form.Group>
-                <Button variant="primary" type="submit" onClick={handleSubmit}>
+
+                <Button type="submit" variant="primary">
                   Submit
                 </Button>
               </Form>

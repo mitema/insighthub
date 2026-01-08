@@ -23,5 +23,6 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     #path('register/', include('insighthub_accounts.urls')),
-    path('register/', views.register)
+   #path('register/', views.register)
+    path('login/', views.login)
 ]

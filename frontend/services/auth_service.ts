@@ -6,9 +6,9 @@ export interface RegisterPayload {
 }
 
 // call backend url
-export const registerApi = async (data: RegisterPayload) => {
-  console.log("in register api");
-  const response = await api.post("/accounts/register/", data);
+export const loginApi = async (data: RegisterPayload) => {
+  console.log("in login api");
+  const response = await api.post("/accounts/login/", data);
   console.log(response.data);
   return response.data;
 };
